@@ -1,0 +1,41 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+class Solution {
+public:
+    vector<vector<int>> construct2DArray(vector<int>& original, int m, int n) {
+        // 確保 1D 陣列長度剛好等於 m * n
+        if (original.size() != m * n) {
+            return {};
+        }
+
+        // 初始化 2D 陣列大小
+        vector<vector<int>> Array(m, vector<int>(n, 0));
+
+        // 填充 2D 陣列
+        for (int i = 0; i < m; i++) {   // 遍歷每一列
+            for (int j = 0; j < n; j++) {  // 遍歷每一行
+                Array[i][j] = original[i * n + j];  // 計算對應的 1D 陣列索引
+            }
+        }
+
+        return Array;
+    }
+};
+
+int main() {
+    vector<int> original = { 1, 2, 3, 4 };
+    Solution solution;
+    vector<vector<int>> result = solution.construct2DArray(original, 2, 2);
+
+    // 輸出 2D 陣列
+    for (const auto& row : result) {
+        for (int num : row) {
+            cout << num << " ";
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
