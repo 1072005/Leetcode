@@ -1,0 +1,20 @@
+class Solution {
+public:
+    bool isPowerOfTwo(int n) {
+        int record = n;
+        if (n == 0)
+        {
+            return false;
+        }
+        while (record != 1)
+        {
+            if (n != 1 && n % 2 != 0 )
+            {
+                return false;
+            }
+            record = n / 2;
+            n = record;
+        }
+        return true;
+    }
+};
