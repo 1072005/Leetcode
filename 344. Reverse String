@@ -1,0 +1,18 @@
+class Solution {
+public:
+    vector<char> ans = {};
+
+    void reverseString(vector<char>& s) {
+        int num = s.size()-1;
+        ans.resize(s.size());
+        cout << num;
+        for (int i = 0; i < s.size(); i++)
+        {
+            ans[i] = s[num - i];
+        }
+        for (int i = 0; i < s.size(); i++)
+        {
+            s[i] = ans[i];
+        }
+    }
+};
