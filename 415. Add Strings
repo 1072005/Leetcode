@@ -1,0 +1,28 @@
+class Solution {
+public:
+    string addStrings(string num1, string num2) {
+        string answer;
+        int carry = 0; 
+        while (num1.length() != num2.length()) { 
+            if (num1.length() > num2.length()) {
+                num2.insert(num2.begin(), '0');
+            }
+            else {
+                num1.insert(num1.begin(), '0');
+            }
+        }
+
+        for (int i = num1.length() - 1; i >= 0; i--) {
+            int digit = (num1[i] - '0') + (num2[i] - '0') + carry; 
+            carry = digit / 10;  
+            answer.push_back((digit % 10) + '0'); 
+        }
+
+        if (carry) { 
+            answer.push_back(carry + '0');
+        }
+
+        reverse(answer.begin(), answer.end()); 
+        return answer;
+    }
+};
