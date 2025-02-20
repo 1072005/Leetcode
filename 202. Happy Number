@@ -1,0 +1,36 @@
+class Solution {
+public:
+    bool isHappy(int n) {
+        string record = to_string(n);
+        vector<int> recordnum;
+        while (true)
+        {
+            int sum = 0;
+            for (int i = record.size() - 1; i >= 0; i--)
+            {
+                sum = pow(record[i]-'0', 2) + sum;
+            }
+            if (sum == 1)
+            {
+                return true;
+            }
+            recordnum.push_back(sum);
+            record = to_string(sum);
+            if (recordnum.size() > 1)
+            {
+                for (int i = 0; i < recordnum.size(); i++)
+                {
+                    for (int j = i+1; j < recordnum.size(); j++)
+                    {
+                        if (recordnum[i] == recordnum[j])
+                        {
+                            return false;
+                        }
+                    }
+                }
+            }
+
+        }
+
+    }
+};
